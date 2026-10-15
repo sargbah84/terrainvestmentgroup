@@ -36,8 +36,9 @@ export default function HomePage() {
           sizes="100vw"
           className="-z-20 object-cover object-[70%_center]"
         />
-        {/* Soft white wash on the left so the copy reads cleanly */}
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-white/85 via-white/45 to-white/0 lg:via-white/30" />
+        {/* White wash held strong across the copy column, fading out past the
+            middle so the heading and paragraph read cleanly (per mockup). */}
+        <div className="absolute inset-0 -z-10 bg-white/75 md:bg-transparent md:bg-[linear-gradient(to_right,rgba(255,255,255,0.94)_0%,rgba(255,255,255,0.88)_32%,rgba(255,255,255,0.6)_50%,rgba(255,255,255,0.15)_64%,rgba(255,255,255,0)_74%)]" />
         <div className="absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-t from-canvas/70 to-transparent" />
 
         <div className="mx-auto max-w-7xl px-5 pb-36 pt-16 lg:px-8 lg:pb-44 lg:pt-24">
