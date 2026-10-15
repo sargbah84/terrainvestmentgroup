@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import Reveal from "@/components/Reveal";
 import TeamCard from "@/components/TeamCard";
 import { SectionHeading } from "@/components/ui";
 import { TEAM, type TeamMember } from "@/lib/site";
@@ -37,8 +38,10 @@ export default function TeamPage() {
             <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8">
               <SectionHeading eyebrow={g.name} title={g.name === "Leadership" ? "Leadership Team" : g.name} lead={g.lead} />
               <div className="mt-10 grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 lg:grid-cols-6">
-                {members.map((m) => (
-                  <TeamCard key={m.name} member={m} />
+                {members.map((m, i) => (
+                  <Reveal key={m.name} variant="zoom" delay={i * 80}>
+                    <TeamCard member={m} />
+                  </Reveal>
                 ))}
               </div>
             </div>
@@ -47,7 +50,7 @@ export default function TeamPage() {
       })}
 
       <section className="bg-forest">
-        <div className="mx-auto max-w-4xl px-5 py-16 text-center lg:px-8">
+        <Reveal className="mx-auto max-w-4xl px-5 py-16 text-center lg:px-8">
           <h2 className="text-3xl font-extrabold text-white">Want to join us?</h2>
           <p className="mt-3 text-white/80">
             We&rsquo;re always looking for talented, committed people who want to help build
@@ -59,7 +62,7 @@ export default function TeamPage() {
           >
             Get in Touch →
           </Link>
-        </div>
+        </Reveal>
       </section>
     </>
   );

@@ -7,7 +7,7 @@ export default function SectorCard({ sector }: { sector: Sector }) {
   return (
     <Link
       href={`/our-work/${sector.slug}`}
-      className="group flex flex-col overflow-hidden rounded-xl border border-line bg-white shadow-[0_2px_10px_rgba(12,40,41,0.05)] transition-all hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(12,40,41,0.12)]"
+      className="group flex h-full flex-col overflow-hidden rounded-xl border border-line bg-white shadow-[0_2px_10px_rgba(12,40,41,0.05)] transition-all hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(12,40,41,0.12)]"
     >
       <div className="relative aspect-[16/9] overflow-hidden">
         <Image

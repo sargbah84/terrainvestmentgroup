@@ -28,6 +28,14 @@ gallery, ventures, and social links (empty URLs are hidden).
 
 Design tokens (colors, font) are in `src/app/globals.css` under `@theme`.
 
+## Motion
+
+- `src/components/Reveal.tsx` — wrap anything to fade/slide it in when it scrolls into view
+  (`variant`: `up` | `left` | `right` | `zoom` | `fade`; `delay` in ms for staggering).
+- `src/components/CountUp.tsx` — animated counters in the impact band.
+- CSS lives at the bottom of `globals.css`. Everything is disabled for visitors with
+  "reduce motion" enabled, and content stays visible if JavaScript is off.
+
 ## Images
 
 `public/images/` — homepage hero (`hero-cocoa-valley-sunrise.jpg`), impact band

@@ -56,6 +56,15 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     // Opt-out) inject attributes on <html> before React hydrates. This only
     // silences attribute diffs on this element, not its children.
     <html lang="en" suppressHydrationWarning className={`${jakarta.variable} h-full antialiased`}>
+      <head>
+        {/* Enables scroll-reveal hidden states before first paint (no flash);
+            without JS the class is never added and content stays visible. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('reveal-ready')",
+          }}
+        />
+      </head>
       <body className="flex min-h-full flex-col font-sans">
         <script
           type="application/ld+json"

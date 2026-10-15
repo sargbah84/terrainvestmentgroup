@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import CtaBand from "@/components/CtaBand";
 import ImpactBand from "@/components/ImpactBand";
+import Reveal from "@/components/Reveal";
 import SectorCard from "@/components/SectorCard";
 import TeamCard from "@/components/TeamCard";
 import {
@@ -34,7 +35,7 @@ export default function HomePage() {
           fill
           priority
           sizes="100vw"
-          className="-z-20 object-cover object-[70%_center]"
+          className="hero-zoom -z-20 object-cover object-[70%_center]"
         />
         {/* White wash held strong across the copy column, fading out past the
             middle so the heading and paragraph read cleanly (per mockup). */}
@@ -43,32 +44,39 @@ export default function HomePage() {
 
         <div className="mx-auto max-w-7xl px-5 pb-36 pt-16 lg:px-8 lg:pb-44 lg:pt-24">
           <div className="max-w-[640px]">
-            <p className="text-xs font-bold uppercase tracking-[0.12em] text-ink sm:text-[13px]">
-              Investing in People. Communities. A Brighter Liberia.
-            </p>
+            <Reveal>
+              <p className="text-xs font-bold uppercase tracking-[0.12em] text-ink sm:text-[13px]">
+                Investing in People. Communities. A Brighter Liberia.
+              </p>
+            </Reveal>
+            <Reveal delay={120}>
             <h1 className="mt-5 text-[2.6rem] font-extrabold leading-[1.05] tracking-tight text-ink sm:text-6xl lg:text-[4.1rem]">
               Sustainable Investment for{" "}
               <span className="bg-gradient-to-r from-brand to-leaf bg-clip-text text-transparent">
                 Lasting Impact
               </span>
             </h1>
+            </Reveal>
+            <Reveal delay={260}>
             <p className="mt-6 max-w-[560px] text-base leading-relaxed text-ink/85 sm:text-[17px]">
               Terra Investment Group is an investment firm focused on helping to build the
               future of Liberia through strategic investments in Agriculture, Real Estate,
               Transportation, Technology, and Digital Development.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
+            </Reveal>
+            <Reveal delay={400} className="mt-8 flex flex-wrap gap-4">
               <ButtonLink href="/about#vision">Our Vision</ButtonLink>
               <ButtonLink href="/contact?subject=Partnership" variant="outline" arrow={false}>
                 Partner With Us
               </ButtonLink>
-            </div>
+            </Reveal>
           </div>
         </div>
 
         {/* Floating card */}
-        <div className="absolute bottom-40 right-8 hidden w-[300px] rounded-2xl bg-white/95 p-5 shadow-xl backdrop-blur xl:right-[max(2rem,calc((100vw-80rem)/2+2rem))] xl:block">
-          <div className="flex gap-4">
+        <div className="absolute bottom-40 right-8 hidden w-[300px] xl:right-[max(2rem,calc((100vw-80rem)/2+2rem))] xl:block">
+          <Reveal variant="right" delay={650}>
+          <div className="animate-float flex gap-4 rounded-2xl bg-white/95 p-5 shadow-xl backdrop-blur">
             <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-leaf text-white">
               <SproutIcon className="h-6 w-6" />
             </span>
@@ -79,15 +87,17 @@ export default function HomePage() {
               </p>
             </div>
           </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Pillars strip, overlapping the hero */}
       <section className="relative z-10 mx-auto -mt-24 max-w-7xl px-5 lg:px-8">
-        <div className="grid grid-cols-2 rounded-2xl border border-line bg-white/95 py-6 shadow-[0_10px_40px_rgba(12,40,41,0.10)] backdrop-blur lg:grid-cols-4">
+        <Reveal delay={500} className="grid grid-cols-2 rounded-2xl border border-line bg-white/95 py-6 shadow-[0_10px_40px_rgba(12,40,41,0.10)] backdrop-blur lg:grid-cols-4">
           {PILLARS.map(({ icon: PIcon, title, text }, i) => (
-            <div
+            <Reveal
               key={title}
+              delay={650 + i * 110}
               className={`flex flex-col items-center px-4 py-4 text-center ${
                 i > 0 ? "lg:border-l lg:border-line" : ""
               } ${i % 2 === 1 ? "border-l border-line lg:border-l" : ""}`}
@@ -95,9 +105,9 @@ export default function HomePage() {
               <PIcon className="h-8 w-8 text-leaf" />
               <h2 className="mt-3 text-[15px] font-bold text-ink">{title}</h2>
               <p className="mx-auto mt-1.5 max-w-[190px] text-xs leading-relaxed text-muted">{text}</p>
-            </div>
+            </Reveal>
           ))}
-        </div>
+        </Reveal>
       </section>
 
       {/* ---------------------------------------------------------- Impact */}
@@ -108,7 +118,7 @@ export default function HomePage() {
       {/* ----------------------------------------------------------- About */}
       <section className="bg-paper">
         <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 py-20 lg:grid-cols-2 lg:px-8">
-          <div>
+          <Reveal variant="left">
             <Eyebrow>About Terra Investment Group</Eyebrow>
             <h2 className="mt-4 max-w-[480px] text-4xl font-extrabold leading-[1.1] tracking-tight text-ink sm:text-[2.9rem]">
               Investing Today for a Stronger{" "}
@@ -123,9 +133,9 @@ export default function HomePage() {
             <ButtonLink href="/about" className="mt-8">
               Learn More About Us
             </ButtonLink>
-          </div>
+          </Reveal>
 
-          <div className="relative pb-10 pl-6 sm:pl-10">
+          <Reveal variant="right" delay={150} className="relative pb-10 pl-6 sm:pl-10">
             <div className="absolute bottom-6 left-0 top-0 w-[88%] rounded-2xl bg-gradient-to-br from-leaf-soft to-[#c9ecd3]" />
             <div className="dot-grid absolute -right-2 top-16 hidden h-28 w-16 sm:block" />
             <div className="relative aspect-[16/11] overflow-hidden rounded-2xl shadow-lg">
@@ -137,7 +147,7 @@ export default function HomePage() {
                 className="object-cover object-[50%_30%]"
               />
             </div>
-            <div className="absolute bottom-0 right-0 flex max-w-[300px] gap-4 rounded-2xl bg-white p-5 shadow-xl sm:-right-4">
+            <Reveal variant="zoom" delay={550} className="absolute bottom-0 right-0 flex max-w-[300px] gap-4 rounded-2xl bg-white p-5 shadow-xl sm:-right-4">
               <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-leaf-soft text-leaf">
                 <SproutIcon className="h-8 w-8" />
               </span>
@@ -149,16 +159,18 @@ export default function HomePage() {
                   From farms to families, we invest in people and possibilities.
                 </p>
               </div>
-            </div>
-          </div>
+            </Reveal>
+          </Reveal>
         </div>
       </section>
 
       {/* --------------------------------------------------------- Sectors */}
       <section className="bg-paper">
         <div className="mx-auto max-w-7xl px-5 pb-16 lg:px-8">
-          <Eyebrow>Our Business Focus</Eyebrow>
-          <div className="mt-3 text-center">
+          <Reveal>
+            <Eyebrow>Our Business Focus</Eyebrow>
+          </Reveal>
+          <Reveal delay={100} className="mt-3 text-center">
             <h2 className="text-3xl font-extrabold tracking-tight text-ink sm:text-[2.3rem]">
               Strategic Investments Across Key Sectors
             </h2>
@@ -166,10 +178,12 @@ export default function HomePage() {
               We invest in high-potential opportunities that drive economic growth, create jobs,
               and strengthen communities across Liberia.
             </p>
-          </div>
+          </Reveal>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
-            {SECTORS.map((s) => (
-              <SectorCard key={s.slug} sector={s} />
+            {SECTORS.map((s, i) => (
+              <Reveal key={s.slug} delay={i * 110}>
+                <SectorCard sector={s} />
+              </Reveal>
             ))}
           </div>
         </div>
@@ -177,9 +191,9 @@ export default function HomePage() {
 
       {/* ------------------------------------------------------ Community */}
       <section className="bg-paper px-4 pb-6 lg:px-6">
-        <div className="relative isolate mx-auto grid max-w-[1400px] overflow-hidden rounded-3xl bg-forest lg:grid-cols-2">
+        <Reveal variant="zoom" className="relative isolate mx-auto grid max-w-[1400px] overflow-hidden rounded-3xl bg-forest lg:grid-cols-2">
           <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#0f3a22] to-forest" />
-          <div className="px-8 py-14 sm:px-12 lg:py-16">
+          <Reveal variant="left" delay={200} className="px-8 py-14 sm:px-12 lg:py-16">
             <Eyebrow light>Communities</Eyebrow>
             <h2 className="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-[2.3rem]">
               Stronger Communities Through Shared Opportunity
@@ -192,7 +206,7 @@ export default function HomePage() {
             <ButtonLink href="/impact" variant="mint" className="mt-7">
               See Our Impact
             </ButtonLink>
-          </div>
+          </Reveal>
           <div className="relative min-h-[300px] lg:min-h-0">
             <Image
               src="/images/community-nursery.jpg"
@@ -207,16 +221,17 @@ export default function HomePage() {
               aria-label="See our work in the field"
               className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/85 text-leaf shadow-lg backdrop-blur transition-transform hover:scale-110"
             >
-              <PlayIcon className="ml-1 h-7 w-7" />
+              <span className="absolute inset-0 animate-ping rounded-full bg-white/40 motion-reduce:hidden" aria-hidden />
+              <PlayIcon className="relative ml-1 h-7 w-7" />
             </Link>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* ------------------------------------------------------------ Team */}
       <section className="bg-paper">
         <div className="mx-auto max-w-7xl px-5 py-14 lg:px-8">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <Reveal className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <Eyebrow>Our Team</Eyebrow>
               <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-ink sm:text-[2.3rem]">
@@ -233,10 +248,12 @@ export default function HomePage() {
               Meet the Full Team
               <ArrowRightIcon className="h-4 w-4" />
             </Link>
-          </div>
+          </Reveal>
           <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-4 lg:grid-cols-7">
-            {FEATURED_TEAM.map((m) => (
-              <TeamCard key={m.name} member={m} />
+            {FEATURED_TEAM.map((m, i) => (
+              <Reveal key={m.name} variant="zoom" delay={i * 90}>
+                <TeamCard member={m} />
+              </Reveal>
             ))}
           </div>
         </div>

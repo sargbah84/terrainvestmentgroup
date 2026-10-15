@@ -3,6 +3,7 @@ import Image from "next/image";
 import CtaBand from "@/components/CtaBand";
 import ImpactBand from "@/components/ImpactBand";
 import PageHero from "@/components/PageHero";
+import Reveal from "@/components/Reveal";
 import { Icon, PinIcon } from "@/components/icons";
 import { SectionHeading } from "@/components/ui";
 import { COMMUNITIES, GALLERY, type IconName } from "@/lib/site";
@@ -38,14 +39,14 @@ export default function ImpactPage() {
         <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
           <SectionHeading center eyebrow="How We Create Impact" title="Investing in People and Possibilities" />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {PROGRAMS.map((p) => (
-              <div key={p.title} className="rounded-2xl border border-line bg-white p-6 shadow-sm">
+            {PROGRAMS.map((p, i) => (
+              <Reveal key={p.title} delay={i * 110} className="rounded-2xl border border-line bg-white p-6 shadow-sm">
                 <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-leaf-soft text-brand">
                   <Icon name={p.icon} className="h-6 w-6" />
                 </span>
                 <h3 className="mt-4 text-lg font-bold text-ink">{p.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-body">{p.text}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -61,18 +62,20 @@ export default function ImpactPage() {
               lead="Each of our farms is cared for by people from the community itself — creating steady income close to home and keeping local knowledge at the heart of everything we do."
             />
             <ul className="mt-8 space-y-3">
-              {COMMUNITIES.map((c) => (
-                <li key={c} className="flex items-center gap-3 rounded-xl border border-line bg-white px-5 py-4 shadow-sm">
+              {COMMUNITIES.map((c, i) => (
+                <li key={c}>
+                <Reveal variant="left" delay={i * 120} className="flex items-center gap-3 rounded-xl border border-line bg-white px-5 py-4 shadow-sm">
                   <PinIcon className="h-5 w-5 text-leaf" />
                   <span className="font-bold text-ink">{c}</span>
                   <span className="ml-auto text-xs font-semibold uppercase tracking-wide text-muted">Cocoa farm</span>
+                </Reveal>
                 </li>
               ))}
             </ul>
           </div>
-          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-lg">
+          <Reveal variant="right" delay={150} className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-lg">
             <Image src="/images/cocoa-nursery.jpg" alt="Cocoa nursery rows under shade netting" fill sizes="(min-width:1024px) 560px, 100vw" className="object-cover" />
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -82,12 +85,13 @@ export default function ImpactPage() {
           <SectionHeading center eyebrow="In the Field" title="Our Work on the Ground" />
           <div className="mt-12 grid auto-rows-[200px] grid-cols-2 gap-4 md:grid-cols-4">
             {GALLERY.map((g, i) => (
-              <figure
+              <Reveal
                 key={g.src}
-                className={`group relative overflow-hidden rounded-2xl ${
-                  i === 0 ? "col-span-2 row-span-2" : ""
-                }`}
+                variant="zoom"
+                delay={i * 80}
+                className={i === 0 ? "col-span-2 row-span-2" : ""}
               >
+              <figure className="group relative h-full overflow-hidden rounded-2xl">
                 <Image
                   src={g.src}
                   alt={g.alt}
@@ -99,6 +103,7 @@ export default function ImpactPage() {
                   {g.alt}
                 </figcaption>
               </figure>
+              </Reveal>
             ))}
           </div>
         </div>

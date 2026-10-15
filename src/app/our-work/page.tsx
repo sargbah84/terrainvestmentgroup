@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import CtaBand from "@/components/CtaBand";
 import PageHero from "@/components/PageHero";
+import Reveal from "@/components/Reveal";
 import { ArrowRightIcon, Icon } from "@/components/icons";
 import { SectionHeading } from "@/components/ui";
 import { SECTORS } from "@/lib/site";
@@ -36,10 +37,8 @@ export default function OurWorkPage() {
       <section className="bg-paper">
         <div className="mx-auto max-w-7xl space-y-10 px-5 py-20 lg:px-8">
           {SECTORS.map((s, i) => (
-            <article
-              key={s.slug}
-              className="grid overflow-hidden rounded-3xl border border-line bg-white shadow-sm lg:grid-cols-2"
-            >
+            <Reveal key={s.slug} variant={i % 2 ? "right" : "left"}>
+            <article className="grid overflow-hidden rounded-3xl border border-line bg-white shadow-sm lg:grid-cols-2">
               <div className={`relative min-h-[260px] ${i % 2 ? "lg:order-2" : ""}`}>
                 <Image src={s.image} alt={s.title} fill sizes="(min-width:1024px) 640px, 100vw" className="object-cover" />
               </div>
@@ -67,6 +66,7 @@ export default function OurWorkPage() {
                 </Link>
               </div>
             </article>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -75,12 +75,12 @@ export default function OurWorkPage() {
         <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
           <SectionHeading center eyebrow="Our Approach" title="How We Invest" lead="A hands-on model built for Liberia's realities." />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {APPROACH.map((a) => (
-              <div key={a.step} className="rounded-2xl border border-line bg-white p-6 shadow-sm">
+            {APPROACH.map((a, i) => (
+              <Reveal key={a.step} delay={i * 120} className="rounded-2xl border border-line bg-white p-6 shadow-sm">
                 <span className="text-4xl font-extrabold text-leaf/30">{a.step}</span>
                 <h3 className="mt-2 text-lg font-bold text-ink">{a.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-body">{a.text}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>

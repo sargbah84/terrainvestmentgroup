@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
+import Reveal from "@/components/Reveal";
 import { HandshakeIcon, MailIcon, PinIcon, SOCIAL_ICONS } from "@/components/icons";
 import { SOCIALS } from "@/lib/site";
 import ContactForm from "./ContactForm";
@@ -30,7 +31,7 @@ export default async function ContactPage(props: PageProps<"/contact">) {
 
       <section className="bg-paper">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 py-20 lg:grid-cols-[1fr_1.6fr] lg:px-8">
-          <aside className="space-y-5">
+          <Reveal variant="left" className="space-y-5">
             <h2 className="text-2xl font-extrabold text-ink">Get in touch</h2>
             <p className="leading-relaxed text-body">
               Whether you&rsquo;re an investor, a potential partner, a member of the press, or
@@ -68,13 +69,13 @@ export default async function ContactPage(props: PageProps<"/contact">) {
                 </div>
               </div>
             )}
-          </aside>
+          </Reveal>
 
-          <div className="rounded-3xl border border-line bg-white p-6 shadow-sm sm:p-10">
+          <Reveal variant="right" delay={150} className="rounded-3xl border border-line bg-white p-6 shadow-sm sm:p-10">
             <h2 className="text-2xl font-extrabold text-ink">Send us a message</h2>
             <p className="mb-8 mt-2 text-sm text-body">Fields marked optional can be left blank.</p>
             <ContactForm defaultSubject={defaultSubject} />
-          </div>
+          </Reveal>
         </div>
       </section>
     </>

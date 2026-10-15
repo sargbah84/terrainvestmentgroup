@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import CtaBand from "@/components/CtaBand";
 import PageHero from "@/components/PageHero";
+import Reveal from "@/components/Reveal";
 import SectorCard from "@/components/SectorCard";
 import { CheckIcon, ExternalIcon } from "@/components/icons";
 import { ButtonLink, Eyebrow, SectionHeading } from "@/components/ui";
@@ -46,7 +47,7 @@ export default async function SectorPage(props: PageProps<"/our-work/[slug]">) {
 
       <section className="bg-paper">
         <div className="mx-auto grid max-w-7xl gap-14 px-5 py-20 lg:grid-cols-[1.2fr_1fr] lg:px-8">
-          <div>
+          <Reveal variant="left">
             <StatusBadge status={sector.status} />
             <p className="mt-5 text-xl font-semibold leading-relaxed text-ink">{sector.intro}</p>
             <div className="mt-5 space-y-4 leading-relaxed text-body">
@@ -57,8 +58,9 @@ export default async function SectorPage(props: PageProps<"/our-work/[slug]">) {
 
             <h2 className="mt-12 text-2xl font-extrabold text-ink">Focus Areas</h2>
             <ul className="mt-6 grid gap-4 sm:grid-cols-2">
-              {sector.focus.map((f) => (
-                <li key={f.title} className="rounded-2xl border border-line bg-white p-5 shadow-sm">
+              {sector.focus.map((f, i) => (
+                <li key={f.title}>
+                <Reveal delay={i * 100} className="h-full rounded-2xl border border-line bg-white p-5 shadow-sm">
                   <div className="flex items-center gap-2.5">
                     <span className="flex h-6 w-6 items-center justify-center rounded-full bg-leaf-soft text-brand">
                       <CheckIcon className="h-3.5 w-3.5" />
@@ -66,12 +68,14 @@ export default async function SectorPage(props: PageProps<"/our-work/[slug]">) {
                     <h3 className="font-bold text-ink">{f.title}</h3>
                   </div>
                   <p className="mt-2 text-sm leading-relaxed text-body">{f.text}</p>
+                </Reveal>
                 </li>
               ))}
             </ul>
-          </div>
+          </Reveal>
 
-          <aside className="space-y-6 lg:sticky lg:top-28 lg:self-start">
+          <aside className="lg:sticky lg:top-28 lg:self-start">
+          <Reveal variant="right" delay={150} className="space-y-6">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-lg">
               <Image src={sector.image} alt={sector.title} fill sizes="(min-width:1024px) 480px, 100vw" className="object-cover" />
             </div>
@@ -104,6 +108,7 @@ export default async function SectorPage(props: PageProps<"/our-work/[slug]">) {
                 Talk to Us
               </ButtonLink>
             </div>
+          </Reveal>
           </aside>
         </div>
       </section>
@@ -117,8 +122,10 @@ export default async function SectorPage(props: PageProps<"/our-work/[slug]">) {
             </Link>
           </div>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {others.map((s) => (
-              <SectorCard key={s.slug} sector={s} />
+            {others.map((s, i) => (
+              <Reveal key={s.slug} delay={i * 110}>
+                <SectorCard sector={s} />
+              </Reveal>
             ))}
           </div>
         </div>

@@ -39,7 +39,7 @@ export default function ArticleCard({ article }: { article: Article }) {
   return (
     <Link
       href={`/news/${article.slug}`}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
+      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
     >
       <ArticleImage
         article={article}

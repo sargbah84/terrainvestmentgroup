@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { STATS } from "@/lib/site";
+import CountUp from "./CountUp";
 import { Icon } from "./icons";
+import Reveal from "./Reveal";
 import { ButtonLink } from "./ui";
 
 /** Dark-green "Our Impact So Far" band with the four headline numbers. */
@@ -25,7 +27,7 @@ export default function ImpactBand({
       <div className="absolute inset-0 -z-10 bg-gradient-to-r from-forest/90 via-forest/70 to-forest/80" />
 
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-14 lg:grid-cols-[1fr_1.25fr] lg:px-8">
-        <div>
+        <Reveal variant="left">
           <span className="block h-[3px] w-6 rounded-full bg-mint" />
           <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-[2.1rem]">
             {title}
@@ -36,22 +38,23 @@ export default function ImpactBand({
               View Our Impact
             </ButtonLink>
           )}
-        </div>
+        </Reveal>
 
         <dl className="grid grid-cols-2 gap-y-8 sm:grid-cols-4">
           {STATS.map((s, i) => (
-            <div
+            <Reveal
               key={s.label}
+              delay={i * 120}
               className={`flex flex-col items-center px-2 text-center ${
                 i > 0 ? "sm:border-l sm:border-white/15" : ""
               }`}
             >
               <Icon name={s.icon} className="h-7 w-7 text-mint" />
-              <dd className="mt-3 text-3xl font-extrabold tracking-tight text-white sm:text-[2.1rem]">
-                {s.value.toLocaleString("en-US")}
+              <dd className="mt-3 text-3xl font-extrabold tabular-nums tracking-tight text-white sm:text-[2.1rem]">
+                <CountUp value={s.value} />
               </dd>
               <dt className="mt-1 text-sm text-white/85">{s.label}</dt>
-            </div>
+            </Reveal>
           ))}
         </dl>
       </div>

@@ -134,3 +134,70 @@ body {
   background: var(--color-paper);
   color: var(--color-ink);
 }
+
+/* ------------------------------------------------------------------ */
+/* Motion — scroll reveals (see components/Reveal.tsx) and hero zoom.  */
+/* Hidden states apply only once JS has set html.reveal-ready.         */
+/* ------------------------------------------------------------------ */
+.reveal-ready [data-reveal] {
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-ready [data-reveal]:not(.is-visible) {
+  opacity: 0;
+}
+.reveal-ready [data-reveal="up"]:not(.is-visible) {
+  transform: translateY(32px);
+}
+.reveal-ready [data-reveal="left"]:not(.is-visible) {
+  transform: translateX(-40px);
+}
+.reveal-ready [data-reveal="right"]:not(.is-visible) {
+  transform: translateX(40px);
+}
+.reveal-ready [data-reveal="zoom"]:not(.is-visible) {
+  transform: scale(0.94);
+}
+
+/* Slow settle-in zoom on the homepage hero photo. */
+@keyframes hero-zoom {
+  from {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+.hero-zoom {
+  animation: hero-zoom 2.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Gentle float for the hero's "Building Opportunities" card. */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-ready [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .hero-zoom,
+  .animate-float {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

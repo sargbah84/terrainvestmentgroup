@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRightIcon } from "./icons";
+import Reveal from "./Reveal";
 
 type Variant = "primary" | "outline" | "mint" | "ghost-light";
 
@@ -67,12 +68,12 @@ export function SectionHeading({
   center?: boolean;
 }) {
   return (
-    <div className={center ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
+    <Reveal className={center ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
       {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
       <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-ink sm:text-[2.6rem] sm:leading-[1.15]">
         {title}
       </h2>
       {lead && <p className="mt-4 text-[17px] leading-relaxed text-body">{lead}</p>}
-    </div>
+    </Reveal>
   );
 }

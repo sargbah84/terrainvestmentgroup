@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import Reveal from "./Reveal";
 import { Eyebrow } from "./ui";
 
 /** Banner at the top of every inner page: photo, dark-green wash, breadcrumb. */
@@ -24,7 +25,7 @@ export default function PageHero({
         fill
         priority
         sizes="100vw"
-        className="-z-10 object-cover opacity-40"
+        className="hero-zoom -z-10 object-cover opacity-40"
       />
       <div className="absolute inset-0 -z-10 bg-gradient-to-r from-forest via-forest/85 to-forest/40" />
 
@@ -50,12 +51,18 @@ export default function PageHero({
             ))}
           </ol>
         </nav>
-        <Eyebrow light>{eyebrow}</Eyebrow>
-        <h1 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.4rem]">
-          {title}
-        </h1>
+        <Reveal>
+          <Eyebrow light>{eyebrow}</Eyebrow>
+        </Reveal>
+        <Reveal delay={120}>
+          <h1 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.4rem]">
+            {title}
+          </h1>
+        </Reveal>
         {lead && (
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/85">{lead}</p>
+          <Reveal delay={240}>
+            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/85">{lead}</p>
+          </Reveal>
         )}
       </div>
     </section>

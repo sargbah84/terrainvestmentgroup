@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ArticleCard, { ArticleImage } from "@/components/ArticleCard";
 import PageHero from "@/components/PageHero";
+import Reveal from "@/components/Reveal";
 import { ArrowRightIcon, ClockIcon } from "@/components/icons";
 import { formatDate, getArticles, getCategories } from "@/lib/news";
 
@@ -112,8 +113,10 @@ export default async function NewsPage(props: PageProps<"/news">) {
               )}
 
               <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                {rest.map((a) => (
-                  <ArticleCard key={a.id} article={a} />
+                {rest.map((a, i) => (
+                  <Reveal key={a.id} delay={(i % 3) * 110}>
+                    <ArticleCard article={a} />
+                  </Reveal>
                 ))}
               </div>
 

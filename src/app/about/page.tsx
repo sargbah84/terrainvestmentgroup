@@ -3,6 +3,7 @@ import Image from "next/image";
 import CtaBand from "@/components/CtaBand";
 import ImpactBand from "@/components/ImpactBand";
 import PageHero from "@/components/PageHero";
+import Reveal from "@/components/Reveal";
 import { CheckIcon, Icon } from "@/components/icons";
 import { ButtonLink, Eyebrow, SectionHeading } from "@/components/ui";
 import { VENTURES, type IconName } from "@/lib/site";
@@ -42,7 +43,7 @@ export default function AboutPage() {
       {/* Who we are */}
       <section className="bg-paper">
         <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 py-20 lg:grid-cols-2 lg:px-8">
-          <div className="relative">
+          <Reveal variant="left" className="relative">
             <div className="grid grid-cols-2 gap-4">
               <div className="relative col-span-2 aspect-[16/10] overflow-hidden rounded-2xl">
                 <Image src="/images/community-nursery.jpg" alt="Terra team members in a cocoa nursery" fill sizes="(min-width:1024px) 560px, 100vw" className="object-cover" />
@@ -54,8 +55,8 @@ export default function AboutPage() {
                 <Image src="/images/cocoa-seedlings.jpg" alt="Cocoa seedlings" fill sizes="280px" className="object-cover" />
               </div>
             </div>
-          </div>
-          <div>
+          </Reveal>
+          <Reveal variant="right" delay={150}>
             <SectionHeading
               eyebrow="Who We Are"
               title={<>Formerly Terra Liberia, <span className="text-brand">built for Liberia</span></>}
@@ -83,7 +84,7 @@ export default function AboutPage() {
                 </li>
               ))}
             </ul>
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -95,14 +96,14 @@ export default function AboutPage() {
             {[
               { icon: "target" as const, title: "Our Mission", text: "To invest in Liberia's most promising sectors and entrepreneurs — creating jobs, building skills, and generating lasting value for communities, partners, and investors." },
               { icon: "eye" as const, title: "Our Vision", text: "A prosperous and equitable Liberia where every community has access to opportunity, and where local enterprises compete and thrive on the global stage." },
-            ].map((c) => (
-              <div key={c.title} className="rounded-2xl border border-line bg-white p-8 shadow-sm">
+            ].map((c, i) => (
+              <Reveal key={c.title} delay={i * 150} className="rounded-2xl border border-line bg-white p-8 shadow-sm">
                 <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-leaf-soft text-brand">
                   <Icon name={c.icon} className="h-7 w-7" />
                 </span>
                 <h3 className="mt-5 text-2xl font-extrabold text-ink">{c.title}</h3>
                 <p className="mt-3 leading-relaxed text-body">{c.text}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -113,14 +114,14 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
           <SectionHeading center eyebrow="Our Values" title="How We Work" lead="The principles that guide every investment we make." />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {VALUES.map((v) => (
-              <div key={v.title} className="rounded-2xl border border-line bg-white p-6 text-center shadow-sm">
+            {VALUES.map((v, i) => (
+              <Reveal key={v.title} delay={i * 110} className="rounded-2xl border border-line bg-white p-6 text-center shadow-sm">
                 <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-leaf-soft text-leaf">
                   <Icon name={v.icon} className="h-7 w-7" />
                 </span>
                 <h3 className="mt-4 text-lg font-bold text-ink">{v.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-body">{v.text}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -135,6 +136,7 @@ export default function AboutPage() {
           <ol className="mt-12 grid gap-8 md:grid-cols-4">
             {MILESTONES.map((m, i) => (
               <li key={m.title} className="relative">
+                <Reveal delay={i * 150}>
                 <div className="flex items-center gap-3">
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand text-sm font-bold text-white">
                     {i + 1}
@@ -144,6 +146,7 @@ export default function AboutPage() {
                 <p className="mt-4 text-xs font-bold uppercase tracking-wider text-leaf">{m.year}</p>
                 <h3 className="mt-1 text-lg font-bold text-ink">{m.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-body">{m.text}</p>
+                </Reveal>
               </li>
             ))}
           </ol>
@@ -158,7 +161,7 @@ export default function AboutPage() {
             <ButtonLink href="/our-work" variant="outline">Explore Our Work</ButtonLink>
           </div>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {VENTURES.map((v) => {
+            {VENTURES.map((v, i) => {
               const inner = (
                 <>
                   <Eyebrow>{v.sector}</Eyebrow>
@@ -168,14 +171,18 @@ export default function AboutPage() {
                   </p>
                 </>
               );
-              return v.href ? (
-                <a key={v.name} href={v.href} target="_blank" rel="noreferrer" className="rounded-2xl border border-line bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md">
-                  {inner}
-                </a>
-              ) : (
-                <div key={v.name} className="rounded-2xl border border-dashed border-line bg-white/60 p-6">
-                  {inner}
-                </div>
+              return (
+                <Reveal key={v.name} delay={i * 110}>
+                  {v.href ? (
+                    <a href={v.href} target="_blank" rel="noreferrer" className="block h-full rounded-2xl border border-line bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md">
+                      {inner}
+                    </a>
+                  ) : (
+                    <div className="h-full rounded-2xl border border-dashed border-line bg-white/60 p-6">
+                      {inner}
+                    </div>
+                  )}
+                </Reveal>
               );
             })}
           </div>
