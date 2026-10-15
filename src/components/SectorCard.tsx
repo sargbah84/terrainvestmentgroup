@@ -20,7 +20,9 @@ export default function SectorCard({ sector }: { sector: Sector }) {
       </div>
       <div className="flex flex-1 flex-col px-5 pb-5 pt-5">
         <Icon name={sector.icon} className="h-7 w-7 text-brand" />
-        <h3 className="mt-3 text-[17px] font-bold leading-snug text-ink">{sector.title}</h3>
+        <h3 className="mt-3 text-[17px] font-bold leading-snug text-ink">
+          {sector.shortTitle ?? sector.title}
+        </h3>
         <p className="mt-2 flex-1 text-[13.5px] leading-relaxed text-body">{sector.summary}</p>
         <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-brand">
           Learn More

@@ -46,6 +46,8 @@ export type SectorStatus = "Active" | "Growing" | "Coming Soon";
 export interface Sector {
   slug: string;
   title: string;
+  /** Optional shorter name for compact cards, so titles stay on one line. */
+  shortTitle?: string;
   icon: IconName;
   image: string;
   summary: string;
@@ -206,10 +208,10 @@ export const SECTORS: Sector[] = [
   {
     slug: "digital-content",
     title: "Digital Content Development",
+    shortTitle: "Digital Content",
     icon: "chart",
     image: "/images/sector-digital-content.jpg",
-    summary:
-      "Telling Liberia's story and creating opportunities through media and online platforms.",
+    summary: "Telling Liberia's story through news, media, and online platforms.",
     status: "Active",
     intro:
       "Through TrueLiberia we tell Liberia's story — news, culture, and the people shaping the country — while creating opportunities for local journalists, broadcasters, and creators.",
