@@ -7,7 +7,7 @@ export default function PageHero({
   eyebrow,
   title,
   lead,
-  image = "/images/impact-leaves.jpg",
+  image = "/images/impact-cocoa-leaves.jpg",
   crumbs = [],
 }: {
   eyebrow: string;

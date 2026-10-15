@@ -29,7 +29,7 @@ export default function OurWorkPage() {
         eyebrow="Our Work"
         title="Strategic Investments Across Key Sectors"
         lead="We invest in high-potential opportunities that drive economic growth, create jobs, and strengthen communities across Liberia."
-        image="/images/hero-landscape.jpg"
+        image="/images/hero-cocoa-valley-sunrise.jpg"
         crumbs={[{ label: "Our Work" }]}
       />
 

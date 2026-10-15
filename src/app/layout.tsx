@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     title: DEFAULT_TITLE,
     description: SITE_DESCRIPTION,
     locale: "en_US",
-    images: [{ url: "/images/hero-landscape.jpg", width: 960, height: 640, alt: SITE_NAME }],
+    images: [{ url: "/images/hero-cocoa-valley-sunrise.jpg", width: 1945, height: 808, alt: SITE_NAME }],
   },
   twitter: { card: "summary_large_image", title: DEFAULT_TITLE, description: SITE_DESCRIPTION },
 };

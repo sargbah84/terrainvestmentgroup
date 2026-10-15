@@ -29,24 +29,13 @@ export default function HomePage() {
       {/* ------------------------------------------------------------ Hero */}
       <section className="relative isolate -mt-[76px] overflow-hidden pt-[76px]">
         <Image
-          src="/images/hero-landscape.jpg"
-          alt="Forested hills in West Africa"
+          src="/images/hero-cocoa-valley-sunrise.jpg"
+          alt="Ripe cocoa pods on a tree overlooking a forested valley at sunrise"
           fill
           priority
           sizes="100vw"
-          className="-z-20 object-cover"
+          className="-z-20 object-cover object-[70%_center]"
         />
-        {/* Cocoa tree on the right edge, feathered into the landscape */}
-        <div className="absolute inset-y-0 right-0 -z-10 hidden w-[34%] md:block [mask-image:linear-gradient(to_right,transparent,black_35%)]">
-          <Image
-            src="/images/hero-cocoa.jpg"
-            alt=""
-            fill
-            priority
-            sizes="34vw"
-            className="object-cover object-[50%_40%]"
-          />
-        </div>
         {/* Soft white wash on the left so the copy reads cleanly */}
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-white/85 via-white/45 to-white/0 lg:via-white/30" />
         <div className="absolute inset-x-0 bottom-0 -z-10 h-24 bg-gradient-to-t from-canvas/70 to-transparent" />

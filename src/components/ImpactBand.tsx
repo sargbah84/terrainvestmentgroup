@@ -16,7 +16,7 @@ export default function ImpactBand({
   return (
     <section className="relative isolate overflow-hidden bg-forest">
       <Image
-        src="/images/impact-leaves.jpg"
+        src="/images/impact-cocoa-leaves.jpg"
         alt=""
         fill
         sizes="100vw"

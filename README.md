@@ -30,11 +30,11 @@ Design tokens (colors, font) are in `src/app/globals.css` under `@theme`.
 
 ## Images
 
-`public/images/` — team headshots and field photos come from the original Terra site.
-Stock photos (hero landscape, hero cocoa, sector cards for transportation / technology /
-digital content, impact & CTA backgrounds) are CC0 / public domain from StockSnap and
-Wikimedia Commons, 960–1024px wide. Swap in higher-resolution or your own photos with the
-same filenames.
+`public/images/` — homepage hero (`hero-cocoa-valley-sunrise.jpg`), impact band
+(`impact-cocoa-leaves.jpg`), and partner banner (`cta-river-valley-sunrise.jpg`) are the
+final brand images. Team headshots and field photos come from the original Terra site.
+The sector card photos for transportation / technology / digital content are CC0 stock
+(StockSnap); swap them for your own using the same filenames.
 
 ## News (SeoJama)
 

@@ -24,7 +24,7 @@ export default async function ContactPage(props: PageProps<"/contact">) {
         eyebrow="Contact"
         title="Let's Build a Brighter Liberia Together"
         lead="We welcome partners, investors, and organizations that share our vision for a thriving, sustainable Liberia."
-        image="/images/cta-hills.jpg"
+        image="/images/cta-river-valley-sunrise.jpg"
         crumbs={[{ label: "Contact" }]}
       />
 

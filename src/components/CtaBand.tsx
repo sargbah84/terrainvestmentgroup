@@ -6,7 +6,7 @@ export default function CtaBand() {
   return (
     <section className="relative isolate overflow-hidden bg-forest">
       <Image
-        src="/images/cta-hills.jpg"
+        src="/images/cta-river-valley-sunrise.jpg"
         alt=""
         fill
         sizes="100vw"
