@@ -52,7 +52,10 @@ const orgJsonLd = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${jakarta.variable} h-full antialiased`}>
+    // suppressHydrationWarning: browser extensions (e.g. Google Analytics
+    // Opt-out) inject attributes on <html> before React hydrates. This only
+    // silences attribute diffs on this element, not its children.
+    <html lang="en" suppressHydrationWarning className={`${jakarta.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col font-sans">
         <script
           type="application/ld+json"
