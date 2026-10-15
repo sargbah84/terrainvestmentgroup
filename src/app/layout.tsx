@@ -77,6 +77,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           Skip to content
         </a>
         <Header />
+        {/* Reserves the fixed header's full (unscrolled) height. */}
+        <div aria-hidden className="h-[76px] shrink-0" />
         <main id="main" className="flex-1">
           {children}
         </main>

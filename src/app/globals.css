@@ -173,6 +173,22 @@ body {
   animation: hero-zoom 2.4s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+/* Header slides down on page load. Uses `transform`, so it doesn't clash
+   with the `translate` property Tailwind uses to hide it on scroll. */
+@keyframes header-in {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+.header-in {
+  animation: header-in 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 /* Gentle float for the hero's "Building Opportunities" card. */
 @keyframes float {
   0%,
@@ -194,7 +210,8 @@ body {
     transition: none !important;
   }
   .hero-zoom,
-  .animate-float {
+  .animate-float,
+  .header-in {
     animation: none;
   }
   html {
